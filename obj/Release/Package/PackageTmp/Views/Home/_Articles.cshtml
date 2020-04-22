@@ -1,0 +1,45 @@
+﻿@model WebApplication4.Models.VerifyMainSearchInputViewModel
+
+@if (Model != null)
+{
+
+    <div>
+        <div class="table-responsive text-nowrap">
+            @{
+                <table class="table table-striped">
+                    <tr>
+                        <th class="col">Section</th>
+                        <th class="col">Source</th>
+                        <th class="col">Document</th>
+                        <th class="col">Name</th>
+                    </tr>
+                    @if (Model.response != null)
+                    {
+                        if (Model.response.docs.Count > 0)
+                        {
+
+                            foreach (var emp in Model.response.docs)
+                            {
+                                <tr>
+
+                                    <td class="row">@emp.section_name</td>
+                                    <td class="row">@emp.source</td>
+                                    <td class="row">@emp.document_type</td>
+                                    <td class="row">@emp.headline.main</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td><div>No Record Found</div></td>
+                            </tr>
+                        }
+
+                    }
+
+                </table>
+            }
+        </div>
+    </div>
+}
