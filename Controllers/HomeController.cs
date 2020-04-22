@@ -20,6 +20,7 @@ namespace WebApplication4.Controllers
         {
             return  View();
         }
+
         [HttpPost]
         public async Task<ActionResult> ArticlesList(VerifyMainSearchInputViewModel searchingString)
         {
@@ -40,16 +41,13 @@ namespace WebApplication4.Controllers
                     {
                         var data = await response.Content.ReadAsStringAsync();
                         table = JsonConvert.DeserializeObject<VerifyMainSearchInputViewModel>(data);
-
-
                     }
                 }
+
                 return PartialView("_Articles", table);
             }
 
             return View("Error.cshml");
-
-
         }
     }
 }
